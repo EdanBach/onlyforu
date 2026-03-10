@@ -167,3 +167,25 @@ btnJourney.addEventListener("click", () => {
 closeJourney.addEventListener("click", () => {
   journeyOverlay.classList.remove("active")
 })
+
+const btnResetLock = document.getElementById("btn-reset-lock");
+
+btnResetLock.addEventListener("click", resetLock);
+
+function resetLock() {
+
+  // reset input password
+  input = "";
+
+  // reset dots
+  dots.forEach(dot => {
+    dot.classList.remove("active");
+  });
+
+  // ẩn menu
+  mainContent.classList.add("main-content-hidden");
+  mainContent.classList.remove("main-content-visible");
+
+  // hiện lại lock screen
+  lockScreen.classList.remove("unlocked");
+}

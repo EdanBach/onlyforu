@@ -1193,37 +1193,42 @@ body::before {
   .numpad {
     gap: 12px;
   }
-
-  .reset-lock-btn {
-    bottom: 15px;
-    right: 15px;
-    width: 45px;
-    height: 45px;
-  }
 }
 
-.reset-lock-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #d81b60;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.2);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 100;
-  display: none;
-  /* Ẩn mặc định */
+.reset-lock-btn{
+position: fixed;
+
+bottom: 25px;
+right: 25px;
+
+width: 55px;
+height: 55px;
+
+border-radius: 50%;
+border: none;
+
+background: #ff4b6e;
+color: white;
+
+font-size: 20px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+cursor: pointer;
+
+box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+z-index: 9999;
+}
+
+.reset-lock-btn:hover{
+transform: scale(1.1);
+}
+
+.reset-lock-btn:hover{
+transform:scale(1.1);
 }
 
 /* Hiển thị nút khi đã mở khóa */
