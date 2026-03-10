@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỷ Niệm Tình Yêu - Noel 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #8B0000;
+            --color-secondary: #C41E3A;
+            --color-gold: #D4AF37;
+            --color-cream: #FFF8F0;
+            --color-forest: #1B4332;
+            --color-snow: #FFFAFA;
+        }
+
+        /* Welcome Popup */
+        .welcome-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .welcome-popup.hidden {
+            display: none;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.95), rgba(27, 67, 50, 0.95));
+            padding: 3rem;
+            border-radius: 30px;
+            border: 3px solid var(--color-gold);
+            box-shadow: 0 0 60px rgba(212, 175, 55, 0.6);
+            text-align: center;
+            max-width: 500px;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .popup-gift {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .popup-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .popup-message {
+            font-size: 1.3rem;
+            color: var(--color-cream);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .popup-button {
+            background: linear-gradient(135deg, var(--color-gold), #FFD700);
+            color: var(--color-primary);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .popup-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: 3px solid var(--color-gold);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 30px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .music-player:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(212, 175, 55, 0.7);
+        }
+
+        .music-icon {
+            font-size: 2rem;
+        }
+
+        .music-player.playing {
+            animation: spin 3s linear infinite, pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Image Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.4s ease-out;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            border: 4px solid var(--color-gold);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.6);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 3rem;
+            color: var(--color-gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+            color: #FFD700;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: var(--color-gold);
+            cursor: pointer;
+            background: rgba(139, 0, 0, 0.7);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-nav:hover {
+            background: var(--color-gold);
+            color: var(--color-primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: -80px;
+        }
+
+        .modal-next {
+            right: -80px;
+        }
+
+        /* Fireworks */
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 50%, #8B0000 100%);
+            color: var(--color-snow);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Snowflakes Animation */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        .ornament::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 10px;
+            background: var(--color-gold);
+            border-radius: 2px;
+        }
+
+        .ornament:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .ornament:nth-child(2) { top: 15%; right: 15%; animation-delay: 0.5s; }
+        .ornament:nth-child(3) { top: 60%; left: 8%; animation-delay: 1s; }
+        .ornament:nth-child(4) { top: 70%; right: 12%; animation-delay: 1.5s; }
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5),
+                         0 0 40px rgba(212, 175, 55, 0.3);
+            animation: fadeInDown 1.5s ease-out;
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--color-cream);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.5s ease-out 0.3s backwards;
+            letter-spacing: 0.1em;
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .date-display {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--color-gold);
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out 0.6s backwards;
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--color-gold);
+            text-align: center;
+            margin-bottom: 4rem;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-secondary) 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            padding-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 50%;
+            padding-right: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-content {
+            background: rgba(255, 248, 240, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-width: 400px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.3);
+            border-color: var(--color-gold);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            border: 6px solid var(--color-forest);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            z-index: 10;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--color-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            font-size: 1rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-cream);
+        }
+
+        /* Memory Gallery */
+        .gallery-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            border: 3px solid var(--color-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            animation: zoomIn 0.6s ease-out forwards;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--color-cream);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .gallery-placeholder::before {
+            content: '📷';
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Love Counter */
+        .counter-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .counter-item {
+            background: rgba(255, 248, 240, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-gold);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        .counter-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        .counter-label {
+            font-size: 1.2rem;
+            color: var(--color-cream);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Love Letter Section */
+        .letter-section {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .love-letter {
+            background: linear-gradient(135deg, rgba(255, 248, 240, 0.15), rgba(255, 248, 240, 0.05));
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 30px;
+            border: 3px solid var(--color-gold);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: floatUp 1s ease-out;
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .love-letter::before {
+            content: '❤️';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+
+        .letter-content {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--color-cream);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .letter-signature {
+            margin-top: 2rem;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            text-align: right;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer p {
+            color: var(--color-cream);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            color: var(--color-secondary);
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatHeart 6s ease-in infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-prev {
+                left: 10px;
+            }
+
+            .modal-next {
+                right: 10px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-forest);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--color-gold), var(--color-secondary));
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-gold);
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Popup -->
+    <div class="welcome-popup" id="welcomePopup">
+        <div class="popup-content">
+            <div class="popup-gift">🎁</div>
+            <h2 class="popup-title">Merry Christmas!</h2>
+            <p class="popup-message">Chào mừng em đến với kỷ niệm tình yêu của chúng ta. Một món quà đặc biệt dành riêng cho em trong mùa Giáng Sinh này... ❤️</p>
+            <button class="popup-button" onclick="closeWelcomePopup()">Mở Quà 🎄</button>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-nav modal-prev" onclick="changeImage(-1)">❮</div>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Gallery Image">
+        </div>
+        <div class="modal-nav modal-next" onclick="changeImage(1)">❯</div>
+    </div>
+
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="music/christmas-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Decorative Elements -->
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+    <div class="ornament"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="title">Tình Yêu Của Chúng Ta</h1>
+        <p class="subtitle">Một Giáng Sinh Đầy Kỷ Niệm</p>
+        <div class="date-display">25 tháng 12, 2025</div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2 class="section-title">Hành Trình Yêu Thương</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Lần Đầu Gặp Gỡ</h3>
+                    <p class="timeline-date">Tháng 3, 2025</p>
+                    <p>Khoảnh khắc định mệnh khi ánh mắt chúng ta gặp nhau lần đầu tiên. Thế giới như ngừng quay, và trái tim bắt đầu nhịp đập theo một giai điệu mới.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Chuyến Đi Đầu Tiên</h3>
+                    <p class="timeline-date">Tháng 4, 2025</p>
+                    <p>Chúng ta cùng nhau khám phá thế giới, mỗi bước chân là một kỷ niệm đẹp, mỗi nụ cười là một điều kỳ diệu được ghi nhớ mãi mãi.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Kỷ Niệm 7 Tháng</h3>
+                    <p class="timeline-date">Tháng 5, 2025</p>
+                    <p>230 ngày bên nhau, hàng ngàn khoảnh khắc ngọt ngào, và tình yêu ngày càng thắm thiết hơn. Cảm ơn em đã ở bên anh.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Giáng Sinh Này</h3>
+                    <p class="timeline-date">Tháng 12, 2025</p>
+                    <p>Một mùa Noel đặc biệt bên người mình yêu, nơi mỗi bông tuyết rơi là một lời chúc phúc, mỗi ánh đèn lung linh là hy vọng cho tương lai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2 class="section-title">Khoảnh Khắc Đáng Nhớ</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal(0)">
+                <img src="images/anh1.jpg" alt="Kỷ niệm đầu tiên">
+            </div>
+            <div class="gallery-item" onclick="openModal(1)">
+                <img src="images/anh2.jpg" alt="Chuyến đi đáng nhớ">
+            </div>
+            <div class="gallery-item" onclick="openModal(2)">
+                <img src="images/anh3.jpg" alt="Nụ cười rạng rỡ">
+            </div>
+            <div class="gallery-item" onclick="openModal(3)">
+                <img src="images/anh4.jpg" alt="Giây phút ngọt ngào">
+            </div>
+            <div class="gallery-item" onclick="openModal(4)">
+                <img src="images/anh5.jpg" alt="Bên nhau mãi mãi">
+            </div>
+            <div class="gallery-item" onclick="openModal(5)">
+                <img src="images/anh6.jpg" alt="Tình yêu vĩnh cửu">
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Counter -->
+    <section class="counter-section">
+        <h2 class="section-title">Chúng Ta Bên Nhau</h2>
+        <div class="counter-grid">
+            <div class="counter-item">
+                <div class="counter-number" id="days">0</div>
+                <div class="counter-label">Ngày</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="hours">0</div>
+                <div class="counter-label">Giờ</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="minutes">0</div>
+                <div class="counter-label">Phút</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-number" id="seconds">0</div>
+                <div class="counter-label">Giây</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section class="letter-section">
+        <h2 class="section-title">Thư Tình Giáng Sinh</h2>
+        <div class="love-letter">
+            <div class="letter-content">
+                "Trong mùa Giáng sinh này, anh muốn nói với em rằng em là món quà tuyệt vời nhất mà cuộc đời trao cho anh. Mỗi khoảnh khắc bên em đều là một phép màu, mỗi nụ cười của em đều làm thế giới này trở nên tươi sáng hơn. Cảm ơn em đã yêu anh, và anh hứa sẽ luôn ở bên em, trong mọi mùa Giáng sinh sắp tới."
+            </div>
+            <div class="letter-signature">Yêu em mãi mãi ❤️</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Merry Christmas & Happy Anniversary! 🎄</p>
+        <p>Với tất cả tình yêu và niềm hạnh phúc</p>
+    </footer>
+
+    <script>
+        // Welcome Popup
+        function closeWelcomePopup() {
+            const popup = document.getElementById('welcomePopup');
+            popup.style.animation = 'fadeOut 0.5s ease-out';
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 500);
+            
+            // Tự động bật nhạc khi mở quà
+            bgMusic.play();
+            musicPlayer.classList.add('playing');
+            isPlaying = true;
+        }
+
+        // Music Player
+        const bgMusic = document.getElementById('bgMusic');
+        const musicPlayer = document.getElementById('musicPlayer');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicPlayer.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                bgMusic.play();
+                musicPlayer.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+
+        // Image Gallery Modal
+        const imageFiles = [
+            'images/anh1.jpg',
+            'images/anh2.jpg',
+            'images/anh3.jpg',
+            'images/anh4.jpg',
+            'images/anh5.jpg',
+            'images/anh6.jpg'
+        ];
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = imageFiles[currentImageIndex];
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = imageFiles.length - 1;
+            } else if (currentImageIndex >= imageFiles.length) {
+                currentImageIndex = 0;
+            }
+            document.getElementById('modalImage').src = imageFiles[currentImageIndex];
+        }
+
+        // Close modal on outside click
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+                if (e.key === 'Escape') closeModal();
+            }
+        });
+
+        // Fireworks
+        function createFirework(x, y) {
+            const colors = ['#D4AF37', '#C41E3A', '#FFD700', '#FF6B6B', '#4ECDC4', '#FFF'];
+            const particles = 30;
+            
+            for (let i = 0; i < particles; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / particles;
+                const velocity = 50 + Math.random() * 100;
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity;
+                
+                firework.style.setProperty('--tx', tx + 'px');
+                firework.style.setProperty('--ty', ty + 'px');
+                
+                document.getElementById('fireworksContainer').appendChild(firework);
+                
+                setTimeout(() => firework.remove(), 1000);
+            }
+        }
+
+        function launchFireworks() {
+            const container = document.getElementById('fireworksContainer');
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * width;
+                    const y = Math.random() * (height / 2);
+                    createFirework(x, y);
+                }, i * 200);
+            }
+        }
+
+        // Trigger fireworks when scrolling to footer
+        let fireworksTriggered = false;
+        window.addEventListener('scroll', function() {
+            const footer = document.querySelector('.footer');
+            const footerPosition = footer.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+            
+            if (footerPosition < screenPosition && !fireworksTriggered) {
+                launchFireworks();
+                fireworksTriggered = true;
+                setTimeout(() => {
+                    fireworksTriggered = false;
+                }, 3000);
+            }
+        });
+
+        // Snowflakes
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = Math.random() * 3 + 5 + 's';
+            snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 8000);
+        }
+
+        setInterval(createSnowflake, 300);
+
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.bottom = '0';
+            heart.style.animationDuration = Math.random() * 2 + 4 + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+
+        setInterval(createHeart, 2000);
+
+        // Love Counter
+        function updateCounter() {
+            // Thay đổi ngày này thành ngày bắt đầu mối quan hệ của bạn
+            const startDate = new Date('2025-05-11T00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        updateCounter();
+        setInterval(updateCounter, 1000);
+
+        // Scroll Animation for Timeline
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-item, .gallery-item, .counter-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add fadeOut animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
