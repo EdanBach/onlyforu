@@ -66,8 +66,12 @@ const overlays = {
   gift: document.getElementById("gift-overlay"),
 };
 
-document.getElementById("btn-music").onclick = () =>
+document.getElementById("btn-music").onclick = () => {
   overlays.music.classList.add("active");
+
+  currentSong=0;
+  loadSong(currentSong);
+};
 document.getElementById("btn-letter").onclick = openLetter;
 document.getElementById("btn-image").onclick = openGallery;
 document.getElementById("btn-gift").onclick = () =>
@@ -144,41 +148,40 @@ document.getElementById("play-pause-btn").onclick = () => {
   }
 };
 
-const btnAlbum = document.getElementById("btn-album")
-const albumOverlay = document.getElementById("album-overlay")
-const closeAlbum = document.getElementById("close-album")
+const btnAlbum = document.getElementById("btn-album");
+const albumOverlay = document.getElementById("album-overlay");
+const closeAlbum = document.getElementById("close-album");
 
 btnAlbum.addEventListener("click", () => {
-  albumOverlay.classList.add("active")
-})
+  albumOverlay.classList.add("active");
+});
 
 closeAlbum.addEventListener("click", () => {
-  albumOverlay.classList.remove("active")
-})
+  albumOverlay.classList.remove("active");
+});
 
-const btnJourney = document.getElementById("btn-journey")
-const journeyOverlay = document.getElementById("journey-overlay")
-const closeJourney = document.getElementById("close-journey")
+const btnJourney = document.getElementById("btn-journey");
+const journeyOverlay = document.getElementById("journey-overlay");
+const closeJourney = document.getElementById("close-journey");
 
 btnJourney.addEventListener("click", () => {
-  journeyOverlay.classList.add("active")
-})
+  journeyOverlay.classList.add("active");
+});
 
 closeJourney.addEventListener("click", () => {
-  journeyOverlay.classList.remove("active")
-})
+  journeyOverlay.classList.remove("active");
+});
 
 const btnResetLock = document.getElementById("btn-reset-lock");
 
 btnResetLock.addEventListener("click", resetLock);
 
 function resetLock() {
-
   // reset input password
   input = "";
 
   // reset dots
-  dots.forEach(dot => {
+  dots.forEach((dot) => {
     dot.classList.remove("active");
   });
 
@@ -189,3 +192,205 @@ function resetLock() {
   // hiện lại lock screen
   lockScreen.classList.remove("unlocked");
 }
+
+const audioPlayer = document.getElementById("audio-player");
+
+const playBtn = document.getElementById("play-pause-btn");
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+
+const title = document.getElementById("song-title");
+const artist = document.getElementById("song-artist");
+const albumArt = document.querySelector("#album-art img");
+
+const progressBar = document.getElementById("progress");
+const progressContainer = document.getElementById("progress-bar");
+
+const currentTimeEl = document.getElementById("current-time");
+const durationEl = document.getElementById("duration");
+
+const songs = [
+  {
+    title: "Ai Ngoài Anh",
+    artist: "VSTRA",
+    src: "style/sound/Ai Ngoài Anh.mp3",
+    cover: "style/sound/Anh (1).jpg",
+  },
+  {
+    title: "In Love x Có Đôi Điều",
+    artist: "Grey D",
+    src: "style/sound/In Love x Có Đôi Điều.mp3",
+    cover: "style/sound/Anh (2).jpg",
+  },
+  {
+    title: "Nơi Này Có Anh",
+    artist: "Grey D",
+    src: "style/sound/Nơi Này Có Anh.mp3",
+    cover: "style/sound/Anh (3).jpg",
+  },
+  {
+    title: "Lỡ Say Bye Là Bye",
+    artist: "Grey D",
+    src: "style/sound/Lỡ Say Bye Là Bye.mp3",
+    cover: "style/sound/Anh (4).jpg",
+  },
+  {
+    title: "MISSING YOU",
+    artist: "Grey D",
+    src: "style/sound/MISSING YOU.mp3",
+    cover: "style/sound/Anh (5).jpg",
+  },
+  {
+    title: "Anh là ai",
+    artist: "Grey D",
+    src: "style/sound/Anh là ai.mp3",
+    cover: "style/sound/Anh (6).jpg",
+  },
+];
+
+
+let currentSong = 0;
+
+function loadSong(index){
+
+const song=songs[index];
+
+title.innerText=song.title;
+artist.innerText=song.artist;
+
+albumArt.src=song.cover;
+audioPlayer.src=song.src;
+
+document.querySelectorAll(".song-item").forEach(el=>el.classList.remove("active"));
+
+document.querySelectorAll(".song-item")[index].classList.add("active");
+
+}
+
+playBtn.onclick = () => {
+
+if(audioPlayer.paused){
+
+audioPlayer.play();
+playBtn.innerHTML='<i class="fa-solid fa-pause"></i>';
+
+document.getElementById("album-art").classList.add("playing");
+
+}else{
+
+audioPlayer.pause();
+playBtn.innerHTML='<i class="fa-solid fa-play"></i>';
+
+document.getElementById("album-art").classList.remove("playing");
+
+}
+
+};
+
+nextBtn.onclick = () => {
+  currentSong++;
+
+  if (currentSong >= songs.length) {
+    currentSong = 0;
+  }
+
+  loadSong(currentSong);
+  audioPlayer.play();
+};
+
+prevBtn.onclick = () => {
+  currentSong--;
+
+  if (currentSong < 0) {
+    currentSong = songs.length - 1;
+  }
+
+  loadSong(currentSong);
+  audioPlayer.play();
+};
+
+audioPlayer.addEventListener("timeupdate", () => {
+  const { currentTime, duration } = audioPlayer;
+
+  const progressPercent = (currentTime / duration) * 100;
+
+  progressBar.style.width = progressPercent + "%";
+
+  currentTimeEl.innerText = formatTime(currentTime);
+  durationEl.innerText = formatTime(duration);
+});
+
+function formatTime(time) {
+  if (isNaN(time)) return "0:00";
+
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+
+  return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+}
+
+progressContainer.onclick = (e) => {
+  const width = progressContainer.clientWidth;
+
+  const clickX = e.offsetX;
+
+  const duration = audioPlayer.duration;
+
+  audioPlayer.currentTime = (clickX / width) * duration;
+};
+
+const songList = document.getElementById("song-list");
+
+songs.forEach((song,index)=>{
+
+const item = document.createElement("div");
+item.className="song-item";
+
+item.innerHTML = `
+<img src="${song.cover}">
+<div class="song-item-info">
+<div class="song-item-title">${song.title}</div>
+<div class="song-item-artist">${song.artist}</div>
+</div>
+`;
+
+item.onclick=()=>{
+currentSong=index;
+loadSong(index);
+audioPlayer.play();
+};
+
+songList.appendChild(item);
+
+});
+
+const floatingIcons = document.getElementById("floating-icons")
+
+const icons = ["🐱", "💖", "💕", "💗", "💘", "💝", "🌸", "✨", "🐈", "⭐"]
+
+function createFloatingIcon(){
+
+const icon = document.createElement("div")
+
+icon.className="floating-icon"
+
+icon.innerText = icons[Math.floor(Math.random()*icons.length)]
+
+// random vị trí ngang
+icon.style.left = Math.random()*100 + "%"
+
+// random tốc độ
+icon.style.animationDuration = (Math.random()*5 + 6) + "s"
+
+// random kích thước
+icon.style.fontSize = (Math.random()*20 + 20) + "px"
+
+floatingIcons.appendChild(icon)
+
+setTimeout(()=>{
+icon.remove()
+},11000)
+
+}
+
+setInterval(createFloatingIcon,800)

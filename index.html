@@ -67,6 +67,7 @@
           </div>
         </div>
       </div>
+    
     </div>
 
     <!-- MAIN MENU -->
@@ -132,7 +133,6 @@
     </div>
 
     <!-- MUSIC -->
-
     <div class="overlay" id="music-overlay">
       <div class="music-modal">
         <button class="close-btn" id="close-music">
@@ -140,6 +140,10 @@
         </button>
 
         <div class="spotify-player">
+          <div class="player-header">
+    <img src="style/img/asset/music.png" class="spotify-logo">
+    <span>Music Player</span>
+  </div>
           <div class="now-playing">
             <div class="album-art" id="album-art">
               <img src="" />
@@ -176,6 +180,7 @@
               </button>
             </div>
           </div>
+          <div class="song-list" id="song-list"></div>
         </div>
       </div>
     </div>
@@ -183,18 +188,49 @@
     <!-- IMAGE GALLERY -->
 
     <div class="overlay" id="image-overlay">
-      <div class="image-modal">
-        <button class="close-btn" id="close-image">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
 
-        <div class="gallery-container">
-          <div class="gallery-row row-top" id="gallery-top"></div>
+  <div class="image-modal">
 
-          <div class="gallery-row row-bottom" id="gallery-bottom"></div>
-        </div>
+    <button class="close-btn" id="close-image">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+
+    <!-- TOP TEXT + RABBIT -->
+    <div class="gallery-gif-wrapper top">
+
+      <img src="style/img/asset/meo.png" class="gallery-gif">
+
+      <div class="flying-text text-right">
+        HAPPY INTERNATIONAL WOMEN'S DAY
       </div>
+
     </div>
+
+
+    <div class="gallery-container">
+
+      <div class="gallery-row row-top" id="gallery-top"></div>
+
+      <div class="gallery-row row-bottom" id="gallery-bottom"></div>
+
+    </div>
+
+
+    <!-- BOTTOM TEXT + RABBIT -->
+    <div class="gallery-gif-wrapper bottom">
+
+      <div class="flying-text text-left">
+        HAPPY INTERNATIONAL WOMEN'S DAY
+      </div>
+
+      <img src="style/img/asset/meo.png" class="gallery-gif">
+
+    </div>
+
+  </div>
+
+</div>
 
     <!-- LIGHTBOX -->
 
@@ -258,7 +294,7 @@
     <button class="reset-lock-btn" id="btn-reset-lock">
       <i class="fa-solid fa-lock"></i>
     </button>
-    
+    <div id="floating-icons"></div>
     <script src="style/script.js"></script>
   </body>
 </html>
