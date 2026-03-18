@@ -1,4 +1,4 @@
-const password = "1111";
+const password = "2910";
 let input = "";
 
 const dots = document.querySelectorAll(".dot");
